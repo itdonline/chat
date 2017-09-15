@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="một san phẩm từ wwsgo">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="http://www.wwsgo.com/uploads/images/favicon.png" type="image/x-icon"/>
+    <title>VNSDEV</title>
+
+    <!-- Disable tap highlight on IE -->
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- Web Application Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Friendly Chat">
+    <meta name="theme-color" content="#303F9F">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Friendly Chat">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#303F9F">
+
+    <!-- Tile icon for Win8 -->
+    <meta name="msapplication-TileColor" content="#3372DF">
+    <meta name="msapplication-navbutton-color" content="#303F9F">
+
+    <!-- Material Design Lite -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!--<link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.orange-indigo.min.css">-->
+    <link rel="stylesheet" href="styles/material.orange-indigo.min.css">
+    <!--<script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>-->
+    <script defer src="scripts/material.min.js"></script>
+    <!-- App Styling -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+    <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+        <!-- Header section containing logo -->
+        <header class="mdl-layout__header mdl-color-text--white mdl-color--light-blue-700">
+            <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
+                <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+                    <h3><i class="material-icons">chat_bubble_outline</i> VNSDEV.COM</h3>
+                </div>
+                <div id="user-container">
+                    <i class="material-icons" id="btnsidebar">line_weight</i>
+                    <div hidden id="user-pic"></div>
+                    <div hidden id="user-name"></div>
+                    <button hidden id="sign-out" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
+          Sign-out
+        </button>
+                    <button hidden id="sign-in" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
+          <!--<i class="material-icons">account_circle</i>Sign-in with Google-->
+        </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="mdl-layout__content mdl-color--grey-100">
+            <div id="messages-card-container" class="mdl-cell mdl-cell--12-col mdl-grid">
+
+                <!-- Messages container -->
+                <div id="login-card" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--6-col-tablet mdl-cell--6-col-desktop">
+                    <h3>FORM ĐĂNG NHẬP</h3>
+                    <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--9-col-desktop">
+                            <input autocomplete="off" class="mdl-textfield__input" type="text" name="username" id="username">
+                            <label class="mdl-textfield__label">username</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--9-col-desktop">
+                            <input autocomplete="off" class="mdl-textfield__input" type="password" name="password" id="password">
+                            <label class="mdl-textfield__label">password</label>
+                        </div>
+                        <div class="mdl-cell--3-col-desktop">
+                            <button id="submituser" title="ĐĂNG NHẬP" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--amber-400 mdl-color-text--white">
+                                    <i class="material-icons">done</i>
+                                  </button>
+                        </div>
+                        <div style="margin-top: 10px" class="mdl-cell--3-col-desktop">
+                            <button id="registertuser" title="ĐĂNG KÝ" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--amber-400 mdl-color-text--white">
+                                    <i class="material-icons">account_circle</i>
+                                  </button>
+                        </div>
+                        <div class="log-login-card">
+
+                        </div>
+                    </div>
+                </div>
+                <div id="register-card" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--6-col-tablet mdl-cell--6-col-desktop">
+                    <h3>FORM ĐĂNG KÝ</h3>
+                    <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--9-col-desktop">
+                            <input autocomplete="off" class="mdl-textfield__input" type="text" name="username" id="username-register">
+                            <label class="mdl-textfield__label">username</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--9-col-desktop">
+                            <input autocomplete="off" class="mdl-textfield__input" type="password" name="password" id="password-register">
+                            <label class="mdl-textfield__label">password</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--9-col-desktop">
+                            <input autocomplete="off" class="mdl-textfield__input" type="text" name="name" id="name-register">
+                            <label class="mdl-textfield__label">Tên của bạn</label>
+                        </div>
+                        <div style="margin-top: 10px" class="mdl-cell--3-col-desktop">
+                            <button id="registertuser-action" title="ĐĂNG KÝ" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--amber-400 mdl-color-text--white">
+                                        <i class="material-icons">thumb_up</i>
+                                      </button>
+                        </div>
+                        <div style="margin-top: 10px" class="mdl-cell--3-col-desktop">
+                            <button id="logintuser" title="QUAY VỀ ĐĂNG KÝ" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--amber-400 mdl-color-text--white">
+                                    <i class="material-icons">assignment_return</i>
+                                          </button>
+                        </div>
+                        <div class="log-login-card">
+
+                        </div>
+                    </div>
+                </div>
+                <div id="fix-register-card" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--6-col-tablet mdl-cell--6-col-desktop" style="display: none; z-index:99">
+                    <h3>SỬA THÔNG TIN ĐĂNG NHẬP</h3>
+                    <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--9-col-desktop">
+                            <input autocomplete="off" class="mdl-textfield__input" type="password" name="old password" id="old-password-fix">
+                            <label class="mdl-textfield__label">Password cũ</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--9-col-desktop">
+                            <input autocomplete="off" class="mdl-textfield__input" type="password" name="password" id="new-password-fix">
+                            <label class="mdl-textfield__label">password mới</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--9-col-desktop">
+                            <input autocomplete="off" class="mdl-textfield__input" type="text" name="name" id="name-fix">
+                            <label class="mdl-textfield__label">Tên của bạn</label>
+                        </div>
+                        <div style="margin-top: 10px" class="mdl-cell--3-col-desktop">
+                            <button id="fix-registertuser-action" title="Sửa thông tin" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--amber-400 mdl-color-text--white">
+                                        <i class="material-icons">done</i>
+                                      </button>
+                        </div>
+                        <div style="margin-top: 10px" class="mdl-cell--3-col-desktop">
+                            <button title="back" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--amber-400 mdl-color-text--white backhiden-fix">
+                                    <i class="material-icons">assignment_return</i>
+                                          </button>
+                        </div>
+                        <div class="log-fix-card">
+
+                        </div>
+                    </div>
+                </div>
+                <div id="online-card" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--6-col-tablet mdl-cell--6-col-desktop">
+                    <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+                        <div id="log-online-card">
+
+                        </div>
+                    </div>
+                </div>
+                <div id="messages-card" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--6-col-tablet mdl-cell--6-col-desktop">
+                    <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+                        <div id="messages">
+                            <span id="message-filler"></span>
+                        </div>
+                        <form id="message-form"  action="">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="message">
+                                <label class="mdl-textfield__label" for="message">Message...</label>
+                            </div>
+                            <button id="submit" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+              Send
+            </button>
+                        </form>
+                        <form id="image-form" onsubmit="return false;" action="">;
+                            <input id="mediaCapture" type="file" accept="image/*,capture=camera">
+                            <button id="submitImage" title="Add an image" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--amber-400 mdl-color-text--white">
+              <i class="material-icons">image</i>
+            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="must-signin-snackbar" class="mdl-js-snackbar mdl-snackbar">
+                    <div class="mdl-snackbar__text"></div>
+                    <button class="mdl-snackbar__action" type="button"></button>
+                </div>
+
+            </div>
+            <button type="button" id="btnlogout"><i class="material-icons">exit_to_app</i></button>
+        </main>
+        <input type="hidden" id="iduser" />
+        <input type="hidden" id="nameuser" />
+    </div>
+    <!--<div id="tinnhan-gui" style="width: 25%;position: fixed;bottom: 0;right: 0;height: 300px;z-index: 999;background-color: darksalmon;/* opacity: 0.4; */">
+        <div><span style="
+        color: white;
+    ">chat với </span><span class="nameuser"></span>
+            <input type="button" class="off-chat-private" value="TẮT" style="float: right;">
+        </div>
+        <div class="kq-tinnhan-gui" style="
+        border: 3px solid white;
+        padding: 10px;
+    ">
+            <p>lâm ơi</p>
+        </div>
+
+        <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--6-col-tablet mdl-cell--6-col-desktop">
+
+            <!--<input type="text" class="mess-tinnhan-gui" value="sms to you ">
+            <input type="button" class="send-tinnhan-gui" value="gui">
+
+        </div>
+    </div>-->
+    <!--<div style="width: 25%;position: fixed;bottom: 0;right: 0;height: 300px;z-index: 999;background-color: darksalmon;/* opacity: 0.4; */">
+        <div><span class="user-tinnhan-nhan"></span><span style="color: white;"> chat với bạn</span>
+            <input type="button" class="off-chat-private" value="TẮT" style="
+        float: right;
+    ">
+        </div>
+        <div id="kq-tinnhan-gui" style="
+        border: 3px solid white;
+        padding: 10px;
+    ">
+            <p>lâm ơi</p>
+        </div>
+
+        <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--6-col-tablet mdl-cell--6-col-desktop">
+
+            <!--<input type="text" value="sms to you ">
+            <input type="button" value="gui">
+
+        </div>
+    </div>-->
+    <!-- Firebase -->
+    <!-- ***********************************************************************************************************************
+     * TODO(DEVELOPER): Paste the initialization snippet from: Firebase Console > Overview > Add Firebase to your web app. *
+     *********************************************************************************************************************** -->
+    <!--<script src="/socket.io/socket.io.js"></script>-->
+    <script src="scripts/socket.js"></script>
+    <script src="scripts/jquery-1.11.1.min.js"></script>
+
+
+    <script>
+        var socket = io();
+        function guitinnhan(socket){
+            var mess = $('#message').val();
+            if(!mess || mess.length <= 0 ) return false;
+            socket.emit('sender-send', $('#message').val());
+            $('#message').val('');
+            $('#message').focus();
+            return false;
+        }
+        $(document).ready(function(e) {
+            //$('#tinnhan-gui').hide();
+            //$('#tinnhan-nhan').hide();
+            $('#online-card').hide();
+            $('#messages-card').hide();
+            $('#register-card').hide();
+            $('#btnlogout').hide();
+            $('#btnsidebar').click(function(e){
+                var zindex = $('#online-card').css("z-index");
+                if( zindex > 10  ){
+                    $('#online-card').css('z-index','0');
+                }else{
+                    $('#online-card').css('z-index','99');
+                }
+            });
+            $('#message-form').submit(function(e){
+                var mess = $('#message').val();
+                if(!mess || mess.length <= 0 ){
+                    $('#message').focus();
+                    return false;
+                } 
+                socket.emit('sender-send', $('#message').val());
+                $('#message').val('');
+                $('#message').focus();
+                return false;
+            });
+            $("#submit").click(function(e) {
+                var mess = $('#message').val();
+                if(!mess || mess.length <= 0 ){
+                    $('#message').focus();
+                    return false;
+                } 
+                socket.emit('sender-send', $('#message').val());
+                $('#message').val('');
+                $('#message').focus();
+            });
+            $("#registertuser").click(function(e) {
+                $('#register-card').show();
+                $('#login-card').hide();
+            });
+            $('#logintuser').click(function(e) {
+                $('#register-card').hide();
+                $('#login-card').show();
+            });
+            $('#registertuser-action').click(function(e) {
+                var u = $('#username-register').val();
+                var p = $('#password-register').val();
+                var n = $('#name-register').val();
+                if (!u || u.length === 0) {
+                    $('#username-register').focus();
+                    $('.log-login-card').html('<h3 style="color:red">User không được bỏ trống' + '</h3>');
+                    return;
+                } else if (!p || p.length === 0) {
+                    $('#name-register').focus();
+                    $('.log-login-card').html('<h3 style="color:red">Name không được bỏ trống' + '</h3>');
+                    return;
+                } else if (!n || n.length === 0) {
+                    $('#password-register').focus();
+                    $('.log-login-card').html('<h3 style="color:red">Password không được bỏ trống' + '</h3>');
+                    return;
+                }
+                socket.emit('sender-register', {
+                    username: u,
+                    name: n,
+                    password: p
+                });
+            });
+            $("#submituser").click(function(e) {
+                var tmp = {};
+
+                tmp.username = $('#username').val();
+                tmp.password = $('#password').val();
+                if (!tmp.username || tmp.username.length === 0) {
+                    $('#username').focus();
+                    $('.log-login-card').html('user ko được rỗng');
+                } else if (!tmp.password || tmp.password.length === 0) {
+                    $('#password').focus();
+                    $('.log-login-card').html('pass ko được rỗng');
+                }
+                socket.emit('sender-login', tmp);
+            });
+            $("#btnlogout").click(function(e) {
+                //var iduser = $("#iduser").val();
+                $('#login-card').show(3000); // show login
+                $('#messages-card').toggle(3000); // hide message
+                $('#tinnhan-gui').hide();
+                $('#tinnhan-nhan').hide();
+                $('#online-card').hide();
+                $('#btnlogout').hide(3000);
+                socket.emit('logout');
+            });
+            $('#fix-registertuser-action').click(function(e){
+                var oldpass = $('#old-password-fix').val();
+                var newpass = $('#new-password-fix').val();
+                var nameuser = $('#name-fix').val();
+                socket.emit('sender-fix-infor',{ oldpass:oldpass, newpass:newpass , nameuser:nameuser });
+            });
+            $('.backhiden-fix').click(function(e){
+                $('#fix-register-card').hide();
+            });
+            $(document).on('click', '.off-chat-private', function(e) {
+                $(this).parent().parent().hide();
+            });
+            $(document).on('click', '.listuser', function(e) {
+                var iduser = $(this).attr("idobj");
+                if(iduser == "090") return;
+                var nameuser = $(this).attr("nameobj");
+                var nameuserobj = $(this).attr("nameuserobj");
+                var iduser_tmp = $('#iduser').val();
+                if (iduser == iduser_tmp) return;
+                var html_chatprivate = '<div id="' + nameuser + '" style="width: 25%;position: fixed;bottom: 0;right: 0;height: 300px;z-index: 999;background-color: #fafafa;/* opacity: 0.4; */border: 1px solid rgba(0,0,0,.1);box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);"><div style="   min-height: 35px;   background: #0288d1 !important;line-height: 35px;padding-left: 10px;"><span style="color: white;">chat với </span><span class="nameuser">'+nameuserobj+'</span><input type="button" class="off-chat-private" value="TẮT" style="float: right;"></div><div class="kq-tinnhan-gui" style="border: 3px solid white;padding: 10px;height: 190px;overflow: scroll;"></div><div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--6-col-tablet mdl-cell--6-col-desktop">            <input type="text" class="mess-tinnhan-gui" placeholder="Type a message" value="">            <input type="button" class="send-tinnhan-gui" idusernhan="'+iduser+'" value="gui">        </div>    </div>';
+                if ($("#" + nameuser).length == 0) {
+                    //it doesn't exist
+                    $('body').append(html_chatprivate);
+                } else {
+                    $("#" + nameuser).show();
+                }
+
+            });
+            $(document).on('click', '.send-tinnhan-gui', function(e) {
+                var mess = $(this).siblings('.mess-tinnhan-gui').val();
+                var iduser = $(this).attr('idusernhan');
+                var iduser_gui = $('#nameuser').val();
+                $(this).parent().parent().children('.kq-tinnhan-gui').append('<p><b>'+iduser_gui+':</b>'+mess+'</p>')
+                //$("#" +  msg.nameuser + " > .kq-tinnhan-gui ").append('<p>'+msg.noidung+'</p>');
+                var tmp = {};
+                tmp.guiden = iduser;
+                tmp.noidung = mess;
+                socket.emit('sender-send-private', tmp);
+            })
+            $(document).on('click','.fixuser',function(e){
+                $('#fix-register-card').show();
+            });
+            socket.on('server-send', function(msg) {
+                $("#messages").prepend(msg);
+            });
+            socket.on('server-send-private', function(msg) {
+                if (msg.result == 0) { // thất bại
+                    $(".log-login-card").append('<p>' + msg.reason + '</p>');
+                } else { //thành công
+                    $('#login-card').toggle(3000); // ẩn
+                    $('#online-card').show(3000); // hiện ra
+                    $('#messages-card').toggle(3000); // hien ra
+                    $('#iduser').val(msg.iduser);
+                    $('#nameuser').val(msg.username);
+                    $('#name-fix').val(msg.nameuser);
+                    $('#btnlogout').show(3000);
+                    $('#username').html();
+                    $('#password').html();
+                }
+            });
+            socket.on('all-recived', function(msg) {
+                var iduser = $("#iduser").attr('value');
+                //console.log(msg.datahtml);
+                var listuser = '<li class="listuser fixuser" idobj="090" style="color: white;background: #0288D1;font-weight: bold;cursor: pointer;">Sửa thông tin user</li>';
+                for (i = 0; i < msg.datahtml.length; i++) {
+                    if (iduser == msg.datahtml[i].idObj) {
+                        listuser += '<li class="listuser activeuser" idobj="' + msg.datahtml[i].idObj + '"     nameobj="'+msg.datahtml[i].nameObj+'" nameuserobj="'+msg.datahtml[i].nameuserobj+'">' + msg.datahtml[i].nameuserobj + '</li>';
+                    } else {
+                        listuser += '<li class="listuser" idobj="' + msg.datahtml[i].idObj + '" nameobj="'+msg.datahtml[i].nameObj+'" nameuserobj="'+msg.datahtml[i].nameuserobj+'">' + msg.datahtml[i].nameuserobj + '</li>';
+                    }
+                }
+                listuser += "<p>" + msg.reason + "</p>";
+                $('#log-online-card').html(listuser);
+            });
+            socket.on('server-send-oneclient', function(msg) {
+                //$('#tinnhan-nhan').show();
+                //$('#tinnhan-nhan > .user-tinnhan-nhan ').html(msg.username);
+                //$('#tinnhan-nhan > #kq-tinnhan-gui ').append(msg.noidung);
+                var html_chatprivate = '<div id="' + msg.nameuser + '" style="width: 25%;position: fixed;bottom: 0;right: 0;height: 300px;z-index: 999;background-color: #fafafa;/* opacity: 0.4; */border: 1px solid rgba(0,0,0,.1);box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);"><div style="   min-height: 35px;   background: #0288d1 !important;line-height: 35px;padding-left: 10px;"><span style="color: white;">chat với </span><span class="nameuser">'+ msg.nameuserobj+'</span><input type="button" class="off-chat-private" value="TẮT" style="float: right;"></div><div class="kq-tinnhan-gui" style="border: 3px solid white;padding: 10px;height: 190px;overflow: scroll;"><p><b>'+msg.nameuser+':</b>'+msg.noidung+'</p></div><div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--6-col-tablet mdl-cell--6-col-desktop">            <input type="text" class="mess-tinnhan-gui" placeholder="Type a message" value="">            <input type="button" class="send-tinnhan-gui" idusernhan="'+msg.iduser+'" value="gui">        </div>    </div>';
+                if ($("#" +  msg.nameuser).length == 0) {
+                    //it doesn't exist
+                    $('body').append(html_chatprivate);
+                } else {
+                    $("#" +  msg.nameuser).show();
+                    $("#" +  msg.nameuser + " > .kq-tinnhan-gui ").append('<p><b>'+msg.nameuser+':</b>'+msg.noidung+'</p>'); 
+                }
+            });
+            socket.on('server-kick-logout', function(kick) {
+                $('#tinnhan-gui').hide();
+                $('#tinnhan-nhan').hide();
+                $('#online-card').hide();
+                $('#messages-card').hide();
+                $('#login-card').show(3000); // show login
+                $(".log-login-card").html('<p>' + kick.reason + '</p>');
+            });
+            socket.on('server-res-register', function(res) {
+                if (res.result == 0) {
+                    $(res.e).focus();
+                } else if (res.result == 1) {
+                    $(res.e).show();
+                    $('#register-card').hide();
+                } else {
+                    alert('lỗi đăng ký');
+                }
+                $('.log-login-card').html('<h3 style="color:red">' + res.reason + '</h3>');
+            });
+            socket.on('server-res-fix',function(res){
+                $('.log-fix-card').html(res.reason);
+            });
+        });
+    </script>
+</body>
+
+</html>
