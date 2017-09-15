@@ -1,12 +1,12 @@
 {
-  "name": "nodejs-freetuts",
+  "name": "nodejs",
   "version": "1.0.0",
   "description": "Project Learn Nodejs",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "TheHalfHeart@gmail.com",
+  "author": "lamvd2519@gmail.com",
   "license": "ISC",
   "dependencies": {
     "crypto": "^1.0.1",
